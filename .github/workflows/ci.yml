@@ -61,7 +61,7 @@ jobs:
 
             - name: Check coverage
               working-directory: backend
-              run:
+              run: |
                 ls -la coverage
                 ls -la coverage/lcov.info
 
