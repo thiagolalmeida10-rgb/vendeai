@@ -59,6 +59,12 @@ jobs:
               working-directory: backend
               run: npm run test:cov
 
+            - name: Check coverage
+              working-directory: backend
+              run:
+                ls -la coverage
+                ls -la coverage/lcov.info
+
             - name: Build backend
               working-directory: backend
               run: npm run build
