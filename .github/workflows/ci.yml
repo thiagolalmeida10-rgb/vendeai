@@ -1,4 +1,4 @@
-name: CI Frontend
+name: CI
 
 on:
     push:
@@ -55,10 +55,15 @@ jobs:
               working-directory: backend
               run: npm ci
 
-            - name: Run backend tests
+            - name: Run backend tests with coverage
               working-directory: backend
-              run: npm test
+              run: npm run test:cov
 
             - name: Build backend
               working-directory: backend
               run: npm run build
+
+            - name: SonarQube Cloud
+              uses: SonarSource/sonarqube-scan-action@v6
+              env:
+                SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}
